@@ -1,0 +1,21 @@
+# секреты — токены трекера, креды стенда; никогда не коммитим
+.env
+.env.*
+!.env.example
+
+# личные пермишены Claude Code (общие — в .claude/settings.json)
+.claude/settings.local.json
+
+# клоны репозиториев приложения, если лежат внутри проекта
+repos/
+
+# артефакты прогонов: скриншоты, дампы экрана, логи
+screenshots/
+*.png
+!docs/**/*.png
+ui.xml
+
+# системное
+.DS_Store
+__pycache__/
+.venv/

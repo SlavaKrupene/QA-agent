@@ -19,3 +19,7 @@ ui.xml
 .DS_Store
 __pycache__/
 .venv/
+
+# локальный конфиг MCP: пути к venv зависят от машины
+.mcp.json
+!.mcp.json.example

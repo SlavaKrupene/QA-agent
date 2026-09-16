@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "jira": {
+      "command": "mcp-jira/.venv/Scripts/python.exe",
+      "args": ["mcp-jira/server.py"]
+    },
+    "confluence": {
+      "command": "mcp-confluence/.venv/Scripts/python.exe",
+      "args": ["mcp-confluence/server.py"]
+    },
+    "testit": {
+      "command": "mcp-testit/.venv/Scripts/python.exe",
+      "args": ["mcp-testit/server.py"]
+    }
+  }
+}

@@ -27,7 +27,7 @@ Jira агент **только читает**. Комментарии в зад�
 1. Забери репозиторий к себе — любым способом:
    - проще всего: на странице репозитория на GitHub кнопка **Code → Download ZIP**,
      распакуй и назови папку `qa-agent`;
-   - или через git: `git clone https://github.com/chingizmalyukov/test-ai.git qa-agent`
+   - или через git: `git clone https://github.com/SlavaKrupene/QA-agent.git qa-agent`
      (репозиторий приватный — GitHub спросит логин; если не пускает, скачай ZIP).
 2. Открой папку `qa-agent` в Claude Code как проект.
 3. Напиши Claude: **«Прочитай START-HERE.md и настрой»** (или команду `/qa-setup`).

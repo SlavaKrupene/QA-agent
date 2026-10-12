@@ -12,3 +12,4 @@
 
 - [[istochniki-pravdy]] — что канон для текстов и экранов (макет), а что для поведения и чисел (ТЗ)
 - [[stage-ligi]] — лиги на stage: force compute results, ручная посадка в лигу, 9 уровней клубной лиги, pending и подсчёт сверху вниз
+- [[veb-stendy-wasm]] — веб-стенды kiss2 (stage/stage1/prod): где WASM, как отличить wasm от JS-фоллбэка, грабли деплоя и кэша

@@ -2,8 +2,9 @@
 title: Прогон на телефоне (adb, iPhone) — приёмы и ограничения
 summary: Как агент гоняет kiss2 на телефоне пользователя: где adb, как читать логи, запросы и аналитику, как сдвигать дату и успевать тапнуть раньше модалки.
 tags: [phase-2, adb, android, logcat, analytics, modal-queue]
-updated: 2026-10-08
+updated: 2026-10-13
 sources:
+  - KISS-6975, прогон 2026-10-13 (TECNO LI6, Rooms 10.3.0)
   - KISS-6908, прогон 2026-10-08 (TECNO LI6, kiss2 10.1.0)
 ---
 
@@ -34,6 +35,18 @@ sources:
     `--port` (не отвечает).
   - Работает «пулемёт» на устройстве: `while [ ! -f stop ]; do input tap X Y & sleep 0.15; done`
     со стоп-файлом от фонового `logcat | grep -m1 'currentPath=/room'`.
+- **Язык и регион без системных настроек** (Android 13+): `adb shell cmd locale set-app-locales
+  gg.playneta.kiss2 --user 0 --locales en-KZ`, сброс — `--locales ""`. Flutter видит это как локаль
+  устройства: `X-Country: KZ`, `Accept-Language: en-KZ`. `pm clear` этот язык сбрасывает — задавать
+  после очистки.
+- **Сеть:** `adb shell cmd connectivity airplane-mode enable|disable`. После выключения Wi-Fi поднимается
+  10–30 с — ждать `adb shell ping -c1 8.8.8.8`, иначе запросы падают с `connectionError`.
+- **Чтение данных приложения** (debuggable-сборка): `adb shell run-as gg.playneta.kiss2 cat
+  shared_prefs/FlutterSharedPreferences.xml | grep <ключ>`. Целиком не выводить: там данные аккаунта.
+- **Дебаг-экран** (долгое нажатие в правом верхнем углу) через `adb input swipe` / `motionevent` не
+  открывается (2026-10-13) — подмену региона заменять языком приложения выше.
+- **IP телефона** (Wi-Fi `RT-…`) сервер считает «VK-страной» (2026-10-13): онлайн VK на экране входа
+  при любом языке.
 - **Очередь модалок:**
   - на экране поиска комнаты (`/room`) очередь на паузе;
   - в ToD-комнате она на паузе, пока ход за юзером;
